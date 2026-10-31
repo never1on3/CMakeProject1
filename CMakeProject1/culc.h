@@ -29,6 +29,14 @@ void commandblock(const std::string& input_user)
     std::string commandName = input_user.substr(0, openParenPos);
     std::string argString = input_user.substr(openParenPos + 1, closeParenPos - openParenPos - 1);
 
+    auto trim = [](std::string& str)
+    {
+        const char* wStr = " \t\r\n";
+	    str.erase(0, str.find_first_not_of(wStr));
+	    str.erase(str.find_last_not_of(wStr) + 1);
+    };
+	trim(commandName);
+
     auto it = commandMap.find(commandName);
     if (it == commandMap.end())
     {
