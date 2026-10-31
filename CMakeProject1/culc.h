@@ -10,21 +10,38 @@
 
 void commandblock(const std::string& input_user)
 {
-	const std::string commandPrefix = "\\MtPlc(";
-	if (input_user.starts_with(commandPrefix))
-	{
-		std::string argString = input_user.substr(commandPrefix.length());
+    static const std::unordered_map<std::string, std::function<void(int, int)>> commandMap =
+    {
+        { "\\MtPlc", multiplication },
+        { "\\MtAdd", addition },
+        { "\\MtSub", subtraction },
+        { "\\MtDiv", division }
+    };
 
-		if (!argString.empty() && argString.back() == ')')
-		{ argString.pop_back(); }
+    size_t openParenPos = input_user.find('(');
+    size_t closeParenPos = input_user.find(')', openParenPos);
+    if (openParenPos == std::string::npos || closeParenPos == std::string::npos)
+    {
+        std::cout << "Invalid command syntax" << std::endl;
+        return;
+    }
 
-		std::replace(argString.begin(), argString.end(), ',', ' ');
+    std::string commandName = input_user.substr(0, openParenPos);
+    std::string argString = input_user.substr(openParenPos + 1, closeParenPos - openParenPos - 1);
 
-		std::istringstream sst(argString);
-		int a, b;
-		std::string reset;
-		if (sst >> a >> b && !(sst >> reset)){multiplication(a, b);}
-		else{ std::cout << "Invalid arguments for multiplication command" << std::endl; }
-	}
-	else{ std::cout << "Invalid command" << std::endl; }
+    auto it = commandMap.find(commandName);
+    if (it == commandMap.end())
+    {
+        std::cout << "Invalid command" << std::endl;
+        return;
+    }
+
+    std::replace(argString.begin(), argString.end(), ',', ' ');
+    std::istringstream sst(argString);
+    int a, b;
+    if (sst >> a >> b)
+    {
+        it->second(a, b);
+    }
+    else{ std::cout << "Invalid arguments" << std::endl; }
 }

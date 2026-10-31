@@ -5,9 +5,13 @@
 
 #include <iostream>
 
-int add(int a, int b)
+void helpWindow()
 {
-	return a + b;
+	std::cout << "Available commands:\n";
+	std::cout << "\\MtPlc(a, b) - Multiply a and b\n";
+	std::cout << "\\MtAdd(a, b) - Add a and b\n";
+	std::cout << "\\MtSub(a, b) - Subtract b from a\n";
+	std::cout << "\\MtDiv(a, b) - Divide a by b\n";
 }
 
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

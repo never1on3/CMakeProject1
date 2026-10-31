@@ -8,6 +8,7 @@
 
 int main()
 {
+	helpWindow();
 	std::string input_user;
 	std::cout << "Enter command: ";
 	std::getline(std::cin, input_user);
