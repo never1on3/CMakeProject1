@@ -2,9 +2,16 @@
 //
 
 #include "CMakeProject1.h"
+#include <iostream>
+#include "math.h"
+#include "culc.h"
 
 int main()
 {
-	std::cout << "Hello CMake." << std::endl;
+	std::string input_user;
+	std::cout << "Enter command: ";
+	std::getline(std::cin, input_user);
+	commandblock(input_user);
+
 	return 0;
 }
