@@ -6,11 +6,39 @@
 #include "math.h"
 #include "culc.h"
 
+int add(int a, int b) { return a + b; }
+int subtract(int a, int b) { return a - b; }
+int multiply(int a, int b) { return a * b; }
+bool divide(int a, int b, double& result) {
+	if (b == 0) return false;
+	result = static_cast<double>(a) / b;
+	return true;
+}
+
 int main()
 {
+	setlocale(LC_ALL, "RUSSIAN");
+		int a, b;
+		std::cout << "Введите два числа: ";
+		std::cin >> a >> b;
+		std::cout << "Сумма: " << add(a, b) << std::endl;
+		std::cout << "Разность: " << subtract(a, b) << std::endl;
+		std::cout << "Произведение: " << multiply(a, b) << std::endl;
+		double q;
+		if (divide(a, b, q))
+			std::cout << "Частное: " << q << std::endl;
+		else
+			std::cout << "Деление на ноль!" << std::endl;
+
+		std::cout << "Press any key to...\n";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin.get();
+
 	helpWindow();
+
 	std::string input_user;
 	std::cout << "Enter command: ";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
 	std::getline(std::cin, input_user);
 	commandblock(input_user);
 

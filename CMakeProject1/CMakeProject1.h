@@ -14,4 +14,9 @@ void helpWindow()
 	std::cout << "\\MtDiv(a, b) - Divide a by b\n";
 }
 
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+bool divide(int a, int b, double& result);
+
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

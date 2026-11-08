@@ -12,4 +12,6 @@ endif()
 project ("CMakeProject1")
 
 # Включите подпроекты.
-add_subdirectory ("CMakeProject1")
+add_subdirectory("Hospital-lab")
+
+
