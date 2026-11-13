@@ -15,8 +15,13 @@ bool divide(int a, int b, double& result) {
 	return true;
 }
 
+template <typename T1>
+T1 addact(T1 a, T1 b) { return a + a; }
+
 int main()
 {
+	std::cout << addact(1, 3) << ' ' << addact(2.323, 3.543) << ' '<<addact("dsdaw", "dasdwd");
+
 	setlocale(LC_ALL, "RUSSIAN");
 		int a, b;
 		std::cout << "Введите два числа: ";
