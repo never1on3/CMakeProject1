@@ -59,7 +59,17 @@ public:
 	{
 		if (age >= 0 && age <= 120){ this->age = age; }
 	}
-	void setState(PatientState s) {}
+	void setState(PatientState s) 
+	{
+		state = s;
+		PatientState oldState = state;
+	}
+	
+	void updateState(Patient& patient)
+	{
+		patient.setState(PatientState::InTreatment);
+	}
+
 	virtual void printInfo()
 	{
 		std::cout << "Name: " << name << ' ';
@@ -98,8 +108,43 @@ public:
 	}
 };
 
+template<typename T>
+T addact(T a, T b) { return a + b; }
+
+template<typename T1, typename T2>
+void my_swap(T1& a, T2& b) { T1 temp = a; a = b; b = temp; }
+
+template <typename K, typename U>
+void cash(K kash, U user, int& overstake)
+{
+	std::cout << "Account: " << user << " has " << kash << " money" << std::endl;
+	K overstake += kash;
+}
+
+template <typename T, typename U>
+T findElement(std::vector<T&>, U size)
+{
+	for (auto const t : T)
+	{
+		if (t == 5)
+		{
+			std::cout << ' '<<t << '\n';
+			return t;
+		}
+	}
+}
+
 int main()
 {
+	std::cout << addact(2, 3) << ' ' 
+		<< addact(std::string("sos"), std::string("all")) << ' ' 
+			<< addact(2.3232, 56.434) << "\n";
+	int a = 20;
+	double b = 45.90;
+	int b2 = 45;
+	my_swap(a, b);
+	std::cout << a << ' ' << b << '\n';
+	
 	setlocale(LC_ALL, "RUSSIAN");
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
