@@ -59,7 +59,7 @@ void printPair(T1 a, T2 b)
 template <typename T1, typename T2, typename STR>
 void makeTriple(T1 a, T2 b, STR s)
 {
-	std::cout << '[' << a << ", " << b << ", " << s << ']' << std::endl;
+	std::cout << a << ", " << b << ", " << s << std::endl;
 }
 // ============================================================
 // ЗАДАЧА 5 (шаблон + указатель): найти максимум по указателям
