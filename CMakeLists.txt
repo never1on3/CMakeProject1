@@ -14,5 +14,6 @@ project ("CMakeProject1")
 # Включите подпроекты.
 add_subdirectory("Hospital-lab")
 add_subdirectory("templates_hw2")
+add_subdirectory("class_template")
 
 

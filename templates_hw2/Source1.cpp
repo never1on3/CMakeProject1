@@ -34,10 +34,31 @@ const T* maxPtr(const T* a, const T* b)
 	if (b == nullptr) return a;
 	return (*a > *b) ? a : b;
 }
+
+template <typename T>
+class HashCheck
+{
+private:
+	T id{};
+	std::string name{};
+public:
+	HashCheck(T id, std::string name) : id{id}, name{ name } {}
+	~HashCheck() {}
+
+	void printInfo() const
+	{
+		std::cout << id << ' ' << name << std::endl;
+	}
+};
+
 // ============================================================
 // main — НЕ МЕНЯЙТЕ
 // ============================================================
 int main() {
+
+	HashCheck hashCheck(37223, "dfbjd");
+	hashCheck.printInfo();
+
 	// Задача 1
 	std::cout << "=== Задача 1: minOf ===" << std::endl;
 	std::cout << "min(4, 5) = " << minOf(4, 5) << std::endl;
